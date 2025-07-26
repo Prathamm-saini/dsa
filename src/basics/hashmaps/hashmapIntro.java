@@ -7,7 +7,7 @@ import java.util.Map;
 /*Hashing is a simple technique which use a key value pair, pass it to hash function and creates a hashcode
  this hashcode can be used in various ways like abstraction, security, data storage
 ex -> 10(key) gets passed to a hash function Usually there are multiple hash functions (it helps in creating more unique codes)
-hashcode is something like 124@hashcode(some code) (java own way )
+hashcode is something like 124@hashcode(some code) (JVM does it)
 
 real life use case-> we create an account on instagram -> create userid and password this gets stored on its server
 for the user their data privacy is important. so companies like these may provide encryption but this is also hackable to some extent
@@ -22,7 +22,7 @@ search keys -> [11,10,66,58,74]
 what is a hashtable? used to store key value pairs
 * hash functions
 1. Division method (mostly used) (using mod) (key mod size) size = 11 (ex we are using)
-2. mid square method -> |mod key square| % size of hash table
+2. mid square method -> |mod [key square]| % size of hash table
 3. folding method -> add digits then mod by size of hash table
 
 let's use Division method (usually used)

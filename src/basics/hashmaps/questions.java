@@ -51,8 +51,24 @@ public class questions {
             }
         }
         System.out.println(element + " appears " + maxFrequency + " times");
-
     }
+    static boolean arraySubsetOfAnotherBrute(int[] array1, int [] array2) {
+        boolean[] visited = new boolean[array1.length];
 
+        for (int i = 0; i <array2.length; i++) {
+            boolean found = false;
+            for (int j = 0; j <array1.length; j++) {
+                if(!visited[j] && array2[i] == array1[j]){
+                    visited[j] = true;
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
