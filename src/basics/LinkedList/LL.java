@@ -1,5 +1,14 @@
 package basics.LinkedList;
-
+/// You're not copying the entire node — you're copying the reference to the head node. So:
+///
+/// temp and head both point to the same node in memory.
+///
+/// Modifying temp.next is like modifying head.next if temp == head.
+///
+///  Analogy
+/// Imagine your linked list is a chain of people holding hands. Each person (Node) knows who’s next (next). When you assign Node temp = head;, you're just pointing at the same person.
+///
+/// If temp lets go of the next person and grabs someone else, the actual structure of the chain changes — because temp is the person.
 
 public class LL {
 
@@ -78,13 +87,70 @@ public class LL {
 
     public void deleteAtHead(){
         if(head == null){
+            tail = null;
+            return;
+        }
+        if(head == tail){
+            head = tail = null;
             return;
         }
         head = head.next;
-        if(head == null){
-            tail = null;
-        }
         size--;
+    }
+    public void deleteAtTail(){
+        if(tail == null ||  head == null){
+            return;
+        }
+        if (head == tail) {
+            // Only one node in the list
+            head = null;
+            tail = null;
+            return;
+        }
+        Node temp = head;
+        while(temp.next != tail){
+            temp = temp.next;
+        }
+        tail = temp;
+        temp.next = null;
+        size--;
+    }
+    public void deleteAtIndex(int index){
+        if(index < 0 || index > size){
+            System.out.println("Invalid position");
+            return;
+        }
+        else if(head == null || tail == null){
+            return;
+        }
+        else if(index == 0){
+            deleteAtHead();
+            return;
+        }
+        else if(index == size){
+            deleteAtTail();
+            return;
+        }
+        Node temp = head;
+        for (int i = 1; i < index; i++) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        size--;
+        ///this temp is just object and references so making a change in them will cause the change in original(Basic OOP)
+    }
+    public boolean search(int data){
+        Node temp = head;
+        int index = 0;
+        while(temp != null){
+            if(temp.data == data){
+                System.out.print(index +"  ");
+                return true;
+            }
+            temp = temp.next;
+            index++;
+        }
+        return false;
     }
 
 }

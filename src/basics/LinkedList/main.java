@@ -13,7 +13,7 @@ package basics.LinkedList;
 ///                                                                      ex-> 1   2     2
 /// note -> im referring  element in a box such that 1 in a box
 ///
-///  Linked List -->1->2->45->2->5 each block such that 1 itself is in a node containing the pointer to the next
+///  Linked List ->1->2->45->2->5 each block such that 1 itself is in a node containing the pointer to the next
 ///   values stored inside a node
 ///
 /// question? then how do they connect if they just sparse in the memory ?
@@ -36,7 +36,7 @@ package basics.LinkedList;
 /// vauge questions
 /// if you want to go to third? point temp to head which is pointing to first run a loop move next and reach the 3rd node
 /// if you want to add a node point tail.next to new node and tail to last node done!!
-/// what if no tail given?
+/// what if no tail given? (in lc/cf)
 ///  run a loop find where node.next is null. if found that's the null
 ///
 ///
@@ -47,6 +47,7 @@ package basics.LinkedList;
 
 public class main {
     public static void main(String[] args) {
+        System.out.println("Singly Linked List");
         LL ll = new LL();
         ll.insertAtHead(3);
         ll.insertAtHead(4);
@@ -59,5 +60,35 @@ public class main {
 
         ll.insertAtAnyIndex(0,2);
         ll.display();
+
+        ll.deleteAtHead();
+        ll.display();
+
+        ll.deleteAtTail();
+        ll.display();
+
+        ll.deleteAtIndex(2);
+        ll.display();
+
+        System.out.println(ll.search(0));
+        System.out.println();
+
+        System.out.println("Doubly Linked List");
+        DLL dll = new DLL();
+        dll.insertAtHead(3);
+        dll.insertAtHead(4);
+        dll.display();
+
+        dll.insertAtTail(2);
+        dll.insertAtTail(1);
+        dll.display();
+
+        dll.insertAtIndex(2,0);
+        dll.display();
+
+        dll.deleteAtIndex(2);
+        dll.display();
+
+        dll.search(3);
     }
 }
