@@ -63,6 +63,7 @@ public class LL {
         }
         System.out.println("null");
     }
+
     public void insertAtAnyIndex(int data,int index){
         if(index < 0 || index > size){
             System.out.println("Invalid position");

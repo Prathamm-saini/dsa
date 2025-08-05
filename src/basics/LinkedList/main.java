@@ -71,6 +71,8 @@ public class main {
         ll.display();
 
         System.out.println(ll.search(0));
+        System.out.println("Displaying in reverse fashion");
+        ll.displayReverse();
         System.out.println();
 
         System.out.println("Doubly Linked List");
@@ -90,5 +92,9 @@ public class main {
         dll.display();
 
         dll.search(3);
+        dll.displayReverseDLL(); // just displays, does not do any in place sorting
+        dll.reverseDLL();
+        dll.display(); // in place sorting
+
     }
 }

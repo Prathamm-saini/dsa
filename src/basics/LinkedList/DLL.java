@@ -144,5 +144,33 @@ public class DLL {
         }
         return false;
     }
+    public void displayReverseDLL(){
+        if(head == null || tail == null){
+            return;
+        }
+        Node current = tail;
+        while(current !=null){
+            System.out.print(current.data+" -> ");
+            current = current.prev;
+        }
+        System.out.println("null");
+    }
+    public void reverseDLL(){
+        if(head == null || tail == null){
+            return;
+        }
+        if (head == tail) return;
+        Node temp = null;
+        Node current = head;
+        while(current != null){
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
 
+            current = current.prev;
+        }
+        Node extra = head;
+        head = tail;
+        tail = extra;
+    }
 }
