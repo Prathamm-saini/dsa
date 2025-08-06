@@ -63,7 +63,19 @@ public class LL {
         }
         System.out.println("null");
     }
+    public void displayReverse(){
+        if(head == null){
+            return;
+        }
+        int index = size-1;
+        Node current = head;
+        for(int i=index;i>=0;i--){
+            System.out.print(current.data+" -> ");
+            current = current.next;
+        }
+        System.out.println("null");
 
+    }
     public void insertAtAnyIndex(int data,int index){
         if(index < 0 || index > size){
             System.out.println("Invalid position");
@@ -153,5 +165,4 @@ public class LL {
         }
         return false;
     }
-
 }
