@@ -165,4 +165,7 @@ public class LL {
         }
         return false;
     }
+    public int Size(){
+        return size;
+    }
 }
