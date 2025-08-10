@@ -15,13 +15,14 @@ public class questions {
         // solution to this is pass it via storing in an array
         System.out.println(X +" " + Y);
 
-
-        System.out.println(Arrays.toString(reverseArray(arr)));
-
         intWrapper x = new intWrapper(X);
         intWrapper y = new intWrapper(Y);
         SwapWrapper(x,y);
         System.out.println(x.value +" " + y.value); // swapped
+
+        int[] toReverse = {50,40,30,20,10};
+        System.out.println(Arrays.toString(reverseArray(toReverse)));
+
     }
     static void swap(int[] arr, int i, int j){
         int temp = arr[i];
