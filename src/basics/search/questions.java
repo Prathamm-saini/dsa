@@ -159,4 +159,39 @@ public class questions {
         }
         return -1;
     }
+    static int searchInRotatedSortedArray(int[] array, int target) {
+        int pivot = findPivot(array);
+
+        if(array[pivot] == target) return pivot;
+        if(array[0] <= target){
+            return binarySearch(array,target,0,pivot -1);
+        }
+        return binarySearch(array,target,pivot+1,array.length-1);
+    }
+    static int findPivot(int[] array) {
+        int low = 0;
+        int high = array.length - 1;
+
+        if (array[low] <= array[high]) return 0; // Not rotated
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (array[mid] > array[high]) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low;
+    }
+
+    static int binarySearch(int[] array, int target, int low, int high) {
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (array[mid] == target) return mid;
+            else if (array[mid] > target) high = mid - 1;
+            else low = mid + 1;
+        }
+        return -1;
+    }
 }
