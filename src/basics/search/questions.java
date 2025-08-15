@@ -20,6 +20,19 @@ public class questions {
         System.out.println(peakIndex(mountainArray));
 
         System.out.println(searchInMountainArray(mountainArray, 2));
+
+        int[] rotated = {4,5,6,7,0,1,2};
+        System.out.println(searchInRotatedSortedArray(rotated, 2));
+        int[] rotatedDuplicates = {2,9,2,2,2};
+        System.out.println(searchInRotatedSortedArrayDuplicates(rotatedDuplicates, 9));
+
+        System.out.println(timesArrayRotated(rotated));
+
+        int[] single = {1,1,2,2,3,4,4,5,5};
+        System.out.println(singleElementBrute(single));
+        System.out.println(singleElement(single));
+
+
     }
 
     static int ceil(int[] array, int target) {
@@ -193,5 +206,60 @@ public class questions {
             else low = mid + 1;
         }
         return -1;
+    }
+    static int searchInRotatedSortedArrayDuplicates(int[] array, int target) {
+        int pivot = findPivotDuplicates(array);
+        if(array[pivot] == target) return pivot;
+        if(array[0] <= target){
+            return binarySearch(array,target,0,pivot -1);
+        }
+        return binarySearch(array,target,pivot+1,array.length-1);
+    }
+    static int findPivotDuplicates(int[] array) {
+        int low = 0;
+        int high = array.length - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (array[mid] > array[high]) {
+                low = mid + 1;
+            }
+            else if (array[mid] < array[high]) {
+                high = mid;
+            }
+            else {
+                high--;
+            }
+        }
+        return low;
+    }
+    static int timesArrayRotated(int[] array) {
+        if(array[0]<array[array.length-1]){
+            return 0; // you can return array.length meaning array rotated to the size of array elements
+        }
+        return findPivot(array); // for left rotated array
+    }
+    static int singleElementBrute(int[] array) {
+        int ans = 0;
+        for (int j : array) {
+            ans ^= j;
+        }
+        return ans;
+    }
+    static int singleElement(int[] array) {
+        int low = 0;
+        int high = array.length - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if(mid % 2 ==1){
+                mid++;
+            }
+            if (array[mid] == array[mid+1]) {
+                low = mid +2;
+            }
+            else {
+                high = mid;
+            }
+        }
+        return array[low];
     }
 }
