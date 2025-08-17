@@ -7,7 +7,8 @@ import java.util.Arrays;
 public class questions {
     public static void main(String[] args) {
         String[] arr = {"Prat","Sai","Arrow","Dam"};
-        StringArrayPrinting(arr);
+        String s = "PRATHAM";
+        System.out.println(reverseBetter(s));
 
     }
     // for any string s of length n, no of substring = (n(n+1))/2 + 1("") empty substring
@@ -31,22 +32,17 @@ public class questions {
         // if you want to modify and return the sam string use StringBuilder or StringBuffer
     }
     // 2nd way
-    static StringBuilder reverseString2(StringBuilder input){
-        StringBuilder result = new StringBuilder(input);
-        for (int i = 0; i <input.length()/2; i++) {
-            char firstChar = input.charAt(i);
-            char  lastChar = input.charAt(input.length()-i-1);
-            result.setCharAt(i,lastChar);
-            result.setCharAt(input.length()-1-i,firstChar);
+    static StringBuilder reverseBetter(String s){
+        StringBuilder sb = new StringBuilder(s);
+        for (int i = 0; i <sb.length()/2; i++) {
+            char first = sb.charAt(i);
+            char last = sb.charAt(sb.length()-1-i);
+            sb.setCharAt(i,last);
+            sb.setCharAt(sb.length()-1-i,first);
         }
-        return  result;
+        return sb;
     }
     static boolean isPalindrome(String s){
         return reverseString(s).equals(s);
-    }
-    static void StringArrayPrinting(String[] stringArray){
-        for(int i=0;i<stringArray.length;i++){
-            System.out.println(stringArray[i]);
-        }
     }
 }
