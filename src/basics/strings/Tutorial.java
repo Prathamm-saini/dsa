@@ -54,7 +54,7 @@ package basics.strings;
 ///  ...         all points to  "Maxwell"
 ///  person n
 ///  String are immutable so this case ain't possible ->
-///  here if person 7th changes its name then all person's name will be changed ? nah, strings are immutable so it will throw an error
+///  here if person 7th changes its name then all person's name will be changed ? nah, strings are immutable, it will create an object new one for person 7 and now it points to that
 ///
 /// Comparison's of Strings
 /// String a  = "Pratham"

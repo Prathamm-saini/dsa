@@ -7,6 +7,7 @@ public class stringBuilder {
         sb.append("World");
         System.out.println(sb);
 
-
+        // Similar just are mutable as well created in heap
+        // there is no con concept of string pool in string builders
     }
 }
