@@ -22,6 +22,12 @@ public class arrayQuestions {
         System.out.println(Arrays.toString(recursiveSelectionSort(array, 0, 0)));
         System.out.println(Arrays.toString(insertionSort(array)));
         System.out.println(Arrays.toString(recursiveInsertionSort(array, 0)));
+        System.out.println(Arrays.toString(recursiveReverseArray(array, 0, array.length - 1)));
+        reverseArray(array);
+
+        int[] c = {1,2,3,4};
+        int[] d = {3,4,4,5,5};
+        System.out.println(Arrays.toString(merge(c, d)));
     }
     static boolean checkSortedIterative(int[] array){
         for (int i = 1; i <array.length; i++) {
@@ -190,5 +196,66 @@ public class arrayQuestions {
         }
         return recursiveInsertionSort(array, j+1);
     }
-
+    static void reverseArray(int[] array){
+        int i = 0;
+        int j = array.length-1;
+        while (i < j){
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+            i++;
+            j--;
+        }
+        System.out.println(Arrays.toString(array));
+    }
+    static int[] recursiveReverseArray(int[] array,int i,int j){
+        if(i>j) return array;
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+        i++;
+        j--;
+        return recursiveReverseArray(array,i,j);
+    }
+    static int[] merge(int[] a,int[] b){
+        int i = 0;
+        int j = 0;
+        int[] newArray = new int[a.length+b.length];
+        int index = 0;
+        while(i<=a.length-1 && j<=b.length-1){
+            if(a[i]<=b[j]){
+                newArray[index++]=a[i++];
+            }
+            else if(a[i]>b[j]){
+                newArray[index++]=b[j++];
+            }
+        }
+        while(i<=a.length-1){
+            newArray[index++]=a[i++];
+        }
+        while(j<=b.length-1){
+            newArray[index++]=b[j++];
+        }
+        return newArray;
+    }
+    static int[] recursiveMerge(int[] a ,int[] b,int i,int j,int[] newArray,int index){
+        if(i>a.length-1 && j>b.length-1){
+            return newArray;
+        }
+        if (i > a.length - 1) {
+            newArray[index++] = b[j++];
+            return recursiveMerge(a, b, i, j, newArray, index);
+        }
+        if (j > b.length - 1) {
+            newArray[index++] = a[i++];
+            return recursiveMerge(a, b, i, j, newArray, index);
+        }
+        if(a[i]<=b[j]){
+            newArray[index++]=a[i++];
+        }
+        else if(a[i]>b[j]){
+            newArray[index++]=b[j++];
+        }
+        return recursiveMerge(a, b, i, j, newArray, index);
+    }
 }
