@@ -32,7 +32,7 @@ public class arrayQuestions {
         return true;
     }
     static boolean checkSortedRecursive(int[] array,int counter){
-        if(counter == array.length){
+        if(counter == array.length-1){
             return true;
         }
         if(array[counter]>array[counter+1]){
@@ -68,6 +68,7 @@ public class arrayQuestions {
         linearSearchMultipleOutputs(array,target,counter+1);
         return result;
     }
+
     static void pattern(){
         for (int i = 0; i <5; i++) {
             for (int j = 0; j <5-i; j++) {
@@ -126,7 +127,7 @@ public class arrayQuestions {
     static int[] recursiveBubbleSort(int[] array,int length){
         if(length==1) return array;
 
-        for (int i = 0; i <array.length-1; i++) {
+        for (int i = 0; i <length; i++) {
             if(array[i]>array[i+1]){
                 int temp = array[i];
                 array[i] = array[i+1];
@@ -151,16 +152,20 @@ public class arrayQuestions {
     }
     static int[] recursiveSelectionSort(int[] array,int j,int mini){
         if(j == array.length-1) return array;
+
+        int minIndex = j;
         for (int i = j+1; i < array.length; i++) {
-            if(array[i]<array[mini]){
-                mini = i;
+            if(array[i] < array[minIndex]){
+                minIndex = i;
             }
         }
         int temp = array[j];
-        array[j] = array[mini];
-        array[mini] = temp;
-        return recursiveSelectionSort(array,j+1,mini+1);
+        array[j] = array[minIndex];
+        array[minIndex] = temp;
+
+        return recursiveSelectionSort(array, j+1, j+1); // reset mini
     }
+
 
     static int[] insertionSort(int[] array){
         for (int i = 0; i < array.length-1; i++) {
@@ -183,7 +188,7 @@ public class arrayQuestions {
                 array[i-1] = temp;
             }
         }
-        return array;
+        return recursiveInsertionSort(array, j+1);
     }
 
 }
