@@ -1,11 +1,21 @@
 package basics.Recursion;
 
-public class subset {
+public class stringQuestions {
     public static void main(String[] args) {
         StringBuilder sb = new StringBuilder("aabccabcad");
         System.out.println(remove(sb,'a'));
         System.out.println(removeChar(sb,'a'));
         System.out.println(recursiveRemoveChar(sb,'a',new StringBuilder(""),0));
+
+        StringBuilder sb1 = new StringBuilder("abbbbbbbabccabcad");
+        System.out.println(recursiveRemoveChar(sb1,0));
+
+        String APPLE = "appleappleorange";
+        System.out.println(skipApple(APPLE));
+
+        String SkipApp = "appleapp";
+        System.out.println(skipAppNotApple(SkipApp));
+
     }
     // remove a particular character from a string
     private static StringBuilder remove(StringBuilder sb,char c ) {
@@ -39,6 +49,34 @@ public class subset {
            ans.append(current);
        }
        return recursiveRemoveChar(sb,c,ans,index+1);
+    }
+    private static String recursiveRemoveChar(StringBuilder sb,int index) {
+        if(sb.length() == index){
+            return "";
+        }
+        char current = sb.charAt(index);
+        if(current != 'a'){
+            return current + recursiveRemoveChar(sb,index+1);
+        }
+        return recursiveRemoveChar(sb,index+1);
+    }
+    private static String skipApple(String s){
+        if(s.isEmpty()){
+            return "";
+        }
+        if(s.startsWith("apple")){
+            return s.replace("apple","");
+        }
+        return s.charAt(0) + skipApple(s.substring(1));
+    }
+    private static String skipAppNotApple(String s){
+        if(s.isEmpty()){
+            return "";
+        }
+        if(s.startsWith("app") && !s.startsWith("apple")){
+            return s.replace("app","");
+        }
+        return s.charAt(0) + skipAppNotApple(s.substring(1));
     }
 
 }
