@@ -1,7 +1,7 @@
 package basics.hashmaps;
 
 import java.util.HashMap;
-import java.util.Map;
+
 
 public class questions {
     public static void main(String[] args) {

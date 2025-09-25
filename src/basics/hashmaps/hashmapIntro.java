@@ -10,7 +10,9 @@ ex -> 10(key) gets passed to a hash function Usually there are multiple hash fun
 hashcode is something like 124@hashcode(some code) (JVM does it)
 
 real life use case-> we create an account on instagram -> create userid and password this gets stored on its server
+for the user their data privacy is important. so companies like theeal life use case-> we create an account on instagram -> create userid and password this gets stored on its server
 for the user their data privacy is important. so companies like these may provide encryption but this is also hackable to some extent
+so what companies do is Hashing.se may provide encryption but this is also hackable to some extent
 so what companies do is Hashing.
 
 Hashcode is very difficult to deal with i-e similar to how sha256 works (based on hashing only)
