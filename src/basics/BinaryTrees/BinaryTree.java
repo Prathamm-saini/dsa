@@ -23,9 +23,11 @@ public class BinaryTree {
     private Node root;
     // Insert
     public void populate(Scanner scanner){
-        System.out.println("Enter the value of the root node");
-        int value = scanner.nextInt();
-        root  = new Node(value);
+        if(root == null){
+            System.out.println("Enter the value of the root node");
+            int value = scanner.nextInt();
+            root  = new Node(value);
+        }
         populate(scanner,root);
     }
     public void populate(Scanner scanner,Node node){
