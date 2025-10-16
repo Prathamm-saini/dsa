@@ -1,5 +1,11 @@
 package basics.BitManipulation;
-
+/*
+Binary Addition
+0+0 = 0;
+0+1 = 1;
+1+0 = 1;
+1+1 = 10;
+ */
 public class Main {
     public static void main(String[] args) {
         System.out.println(convertToBinary(7));
@@ -79,6 +85,12 @@ public class Main {
             int operand_2 = convertToDecimal(operand2);
             System.out.println(operand_1 ^ operand_2);
         }
+        /*
+        NOT operator in Bit Manipulation
+        step 1 -> flip all digits (0->1, 1->0)
+        step 2-> check if -ve , then do 2's complement
+        if +ve -> stop
+         */
         if(operation == '~'){
             int operand_1 = convertToDecimal(operand1);
             int operand_2 = convertToDecimal(operand2);
@@ -86,6 +98,23 @@ public class Main {
             System.out.println(~operand_2);
         }
     }
+    /*
+    Some Theory on Left shift and Right shift
+
+    Right Shift
+    for right shift if number >> 1/2/3/.. any value
+    we move the no of digits from LSB(the least significant bit)
+    such that for 13 -> 1101 -> 1101>>1 -> 0110 (1 moves ahead and lost)
+    if 13 >> 2 > 1101 >> 2 -> 0011
+
+    Formula for right shift is Number/2^k (k-> no of times it has been masked )
+
+    Left Shift
+    same for left shift just move from the left
+    example -> 13 << 1 -> 1101 << 1 -> 11010 (here 0 is added for the bit which moved ahead)
+
+    formula is number * 2^k
+     */
     private static int rightShift(int number){
         return number >> 1;
     }
@@ -93,3 +122,13 @@ public class Main {
         return number << 1;
     }
 }
+
+/// For negative numbers in bit manipulation , computers stores it by converting it into 2's complement
+/// earlier it was stored via reserving the 31'st bit as 1 but was inefficient and have wrong results many times
+/// for example x = -13 binary value = 1101 onesComplement = 0010
+/// (11111......1)0010 (in 32 bit representation) (Ones Complement)
+/// now do binary addition of 1 to convert it into 2's complement
+/// if the first digit of the number is 1 -> negative number
+/// here it's -> 11....1 (0011) -> that's how negative numbers are stored in computers.
+/// Largest value which can be stored in a computer is 2^31-1 -> Integer.MAXIMUM()
+/// Smallest value which can be stored in a computer is -2^31- > Integer.MINIMUM()
